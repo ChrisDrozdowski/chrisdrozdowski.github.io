@@ -1,7 +1,58 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>Json To Origin C Struct</p>
-</body>
+	<head>
+		<title>JSON to Origin C Struct Converter</title>
+		<meta charset="UTF-8">
+		<script>
+			/*
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('./sw.js').then(function(reg) {
+					console.log('Successfully registered service worker', reg);
+				}).catch(function(err) {
+					console.warn('Error whilst registering service worker', err);
+				})
+			}
+			*/
+		</script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+		<script src="json-to-oc-struct.js"></script>
+		<script src="common.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+		<link rel="stylesheet" href="common.css">
+	</head>
+	<body>
+		<header>
+			<h1>JSON to Origin C Struct</h1>
+			<h2>Convert a JSON object into an Origin C struct.</h2>
+			<p>This tool converts a JSON object into the <code>struct</code>(s) required to process the JSON data in Origin C using the Origin C function<code>JSON.ReadString</code>. Paste your JSON object on the left and the <code>struct</code>(s) will be output to the right for you to copy to your Origin C source code. Checking Verbose Mode will include helpful comments in the output.</p>
+			<p>Generated <code>struct</code>(s) are given default names which you can later customize.</p>
+			<p>The main <code>struct</code>is always declared last and the most dependent one declared first.</p>
+			<p><strong>Please note:</strong> <code>struct</code> members may be assigned <code>int<code> and </code>__int64</code> data types based on the content of the JSON object used for the conversion. It may be the case that they are not actually the proper type for other instances of the same type of JSON object. For example, an <code>int</code> type may in fact be an <code>__int64</code> or even a <code>double</code>. So, you may have to manually tweak the data type in the <code>struct</code>(s).</p>
+			<p>For an example, try converting JSON from the <a href="javascript:" id="sample1">PUG REST API</a>.</p>
+		</header>
+		<table>
+			<tr>
+				<th style="width: 45%;">JSON</th>
+				<th style="width: 10%; font-size: 22px;">&#8594;</th>
+				<th style="width: 45%;">Origin C Struct&nbsp;&nbsp;<input type="checkbox" id="verbose" name="feature" value="1" checked /><label for="verbose">Verbose Mode</label></th>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td style="width: 50%;">
+					<div id="input" contenteditable></div>
+				</td>
+				<td style="width: 50%;">
+					<div id="output"></div>
+				</td>
+			</tr>
+		</table>
+
+		<footer>
+			<a href="https://github.com/ChrisDrozdowski/JsonToOCStruct">View JSON to Origin C Struct on GitHub</a>
+			<br>
+			This page and its code based on code by Matt Holt <a href="https://mholt.github.io/json-to-go/">Matt Holt</a>. Much thanks to him.
+		</footer>
+	</body>
 </html>
