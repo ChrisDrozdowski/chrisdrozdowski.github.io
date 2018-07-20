@@ -102,7 +102,7 @@ footer {
 .faulty-line {
 	color: #C00;
 	background: #FDD;
-	font-weight: bold
+	font-weight: bold;
 }
 
 .json-to-oc-struct {
