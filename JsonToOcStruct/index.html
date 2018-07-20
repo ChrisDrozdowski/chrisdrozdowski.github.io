@@ -26,9 +26,8 @@
 			<h1>JSON to Origin C Struct</h1>
 			<h2>Convert a JSON object into an Origin C struct.</h2>
 			<p>This tool converts a JSON object into the <code>struct</code>(s) required to process the JSON data in Origin C using the Origin C function<code>JSON.ReadString</code>. Paste your JSON object on the left and the <code>struct</code>(s) will be output to the right for you to copy to your Origin C source code. Checking Verbose Mode will include helpful comments in the output.</p>
-			<p>The main <code>struct</code> (the one to pass to <code>JSON.ReadString</code>) is always declared last and the most dependent one declared first.</p>
-			<p>If there is more than one object with the same name in the JSON object and the objects have different properties, then the last one processed is used for the <code>struct</code> definition.</p>
-			<p><strong>Please note:</strong> <code>struct</code> members may be assigned <code>int<code> and </code>__int64</code> data types based on the content of the JSON object used for the conversion. It may be the case that they are not actually the proper type for other instances of the same type of JSON object. For example, an <code>int</code> type may in fact be an <code>__int64</code> or even a <code>double</code>. So, you may have to manually tweak the data type in the <code>struct</code>(s).</p>
+			<p>The main <code>struct</code> (the one to pass to <code>JSON.ReadString</code>) is always declared last.</p>
+			<p><strong>Please read</strong> <a href="https://github.com/ChrisDrozdowski/JsonToOcStruct#limitations">this information</a> for limitations of determinging data types and handling of multiple structs with the same name.
 			<p>For an example, try converting JSON from the <a href="javascript:" id="sample1">PUG REST API</a>.</p>
 		</header>
 		<table>
