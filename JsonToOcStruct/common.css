@@ -112,3 +112,8 @@ footer {
 .clear {
 	clear: both;
 }
+
+.bold {
+	font-weight: bold;
+}
+
