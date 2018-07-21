@@ -15,8 +15,9 @@ function jsonToOcStruct(json, verbose)
         scope,
         structs = [],
         arrays = false,
+        main = 'MyStruct',
         verbose = (verbose || false),
-        baseStName = 'MyStruct',
+
         // List of most keywords that cannot be used for identifiers. May not be complete.
         keywords = ['array','auto','bool','break','case','char','const','continue','default','do','double',
             'else','enum','extern','float','for','goto','if','int','long','register','return','short',
@@ -32,7 +33,7 @@ function jsonToOcStruct(json, verbose)
             }
 
             scope = data;
-            parseScope(scope, baseStName);
+            parseScope(scope);
 
             if (structs.length > 0) {
                 oc = '';
@@ -41,15 +42,15 @@ function jsonToOcStruct(json, verbose)
                     oc += '// Be sure to add this include because of Array member(s).\n#include <Array.h>\n\n';
                 }
 
-                // Have to reverse the array then remove duplicates prior to output to
-                // try to output the structs in proper order.
-                structs = structs.reverse();
-                structs = removeDuplicates(structs);
-                for (var i = 0; i < structs.length; i++)
+                if (verbose) {
+                    oc += '// You can rename the structs but be thoughtful about it.\n\n';
+                }
+
+                for (var i = structs.length - 1; i >= 0; i--)
                 {
-                    if (verbose && (structs.length - 1 === i))
+                    if (verbose && 0 === i)
                     {
-                        oc += '// This is the main struct to pass to JSON.ReadString in Origin C.\n// You can rename it as you see fit.\n'
+                        oc += '// This is the main struct to pass to JSON.ReadString in Origin C.\n'
                     }
                     oc += structs[i] + '\n';
                 }
@@ -64,15 +65,13 @@ function jsonToOcStruct(json, verbose)
 
     return {oc: oc};
 
-    // stName is a potential struct name that has to be passed
-    // through to parseStruct to ensure proper struct naming.
-    function parseScope(scope, stName) {
+    function parseScope(scope) {
         if ('object' === typeof scope && null !== scope) {
             if (Array.isArray(scope)) { // Array.
-                return parseArray(scope, stName);
+                return parseArray(scope);
             }
             else { // JSON object.
-                return parseStruct(scope, stName);
+                return parseStruct(scope);
              }
         }
         else { // Scalar.
@@ -80,9 +79,7 @@ function jsonToOcStruct(json, verbose)
         }
      }
 
-    // stName is a potential struct name that has to be passed
-    // through to parseStruct to ensure proper struct naming.
-    function parseArray(scope, stName) {
+    function parseArray(scope) {
         var scalarType;
 
         for (var i = 0; i < scope.length; i++) {
@@ -128,7 +125,7 @@ function jsonToOcStruct(json, verbose)
 
         if ('struct' === currType && scope.length > 0) {
             arrays = true;
-            var varType = parseStruct(scope[0], stName);
+            var varType = parseStruct(scope[0]);
             return 'Array<' + varType + '&>';
         }
 
@@ -138,43 +135,40 @@ function jsonToOcStruct(json, verbose)
 
     }
 
-    // stName is a struct name that has to be passed
-    // in to ensure proper struct naming.
-    function parseStruct(scope, stName) {
+    function parseStruct(scope) {
         var struct = '',
             current = -1,
-            constructors = '',
-            fullName = '';
+            constructors = '';
 
         structs.push(struct);
         current = structs.length - 1;
 
-        fullName = 'st' + stName;
-
-        structs[current] = 'struct ' + fullName + ' {';
-        if (verbose && !validName(fullName)) {
-            structs[current] += '\t// Struct name is likely an invalid C indentifier.';
+        if (0 === current) {
+            structs[current] = 'struct st' + main +' {\n';
+        }
+        else
+        {
+            structs[current] = 'struct stChild' + current + ' {\n';
         }
 
-        structs[current] += '\n'
 
         var varNames = Object.keys(scope);
         for (var i in varNames) {
             var varName = varNames[i];
-            var varType = parseScope(scope[varName], varName);
+            var varType = parseScope(scope[varName]);
 
             structs[current] += '\t' + varType + ' ';
             structs[current] += ' ' + varName + ';';
 
             if (verbose && !validName(varName)) {
-                structs[current] += '\t// Member name is likely an invalid C indentifier.';
+                structs[current] += '\t// Member name is likely invalid.';
             }
 
             if (verbose && varType.indexOf('__int64') > -1) {
-                structs[current] += '\t// Data type may be double.';
+                structs[current] += '\t// May be double.';
             }
             else if (verbose && varType.indexOf('int') > -1) {
-                structs[current] += '\t// Data type may be __int64 or double.';
+                structs[current] += '\t// May be __int64 or double.';
             }
 
             structs[current] += '\n';
@@ -184,9 +178,8 @@ function jsonToOcStruct(json, verbose)
             }
         }
 
-        if (constructors.length > 0)
-        {
-            structs[current] += '\t' + fullName + '()\n\t{' + constructors + '\t}\n';
+        if (constructors.length > 0) {
+            structs[current] += '\tst' + current + '()\n\t{' + constructors + '\t}\n';
         }
 
         structs[current] += '}\n';
@@ -195,7 +188,7 @@ function jsonToOcStruct(json, verbose)
             return;
         }
 
-        return fullName;
+        return 'stChild' + current;
     }
 
     function ocType(val) {
@@ -247,19 +240,12 @@ function jsonToOcStruct(json, verbose)
             return true;
         }
     }
-
-    function removeDuplicates(arr) {
-        return arr.filter(function(value, index, self) {
-            return index === self.indexOf(value);
-        });
-    }
 }
 
 if (typeof module != 'undefined')
 {
     if (!module.parent) {
-        process.stdin.on('data', function(buf)
-        {
+        process.stdin.on('data', function(buf) {
             var json = buf.toString('utf8');
             console.log(jsonToOcStruct(json).oc);
         })
