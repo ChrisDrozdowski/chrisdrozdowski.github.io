@@ -148,7 +148,7 @@ function jsonToOcStruct(json, verbose)
         }
         else
         {
-            structs[current] = 'struct stChild' + current + ' {\n';
+            structs[current] = 'struct stChild_' + current + ' {\n';
         }
 
 
@@ -188,7 +188,7 @@ function jsonToOcStruct(json, verbose)
             return;
         }
 
-        return 'stChild' + current;
+        return 'stChild_' + current;
     }
 
     function ocType(val) {
