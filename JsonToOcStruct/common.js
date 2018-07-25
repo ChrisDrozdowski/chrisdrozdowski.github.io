@@ -63,15 +63,8 @@ $(function()
 		else
 		{
 			var finalOutput = output.oc;
-			// Firefox can't copy newlines correctly if text is syntax highlighted.
-			// So don't syntax highlight for FF. Hack :(
-			if (navigator.userAgent.indexOf("Firefox") > -1) {
-				$('#output').text(finalOutput);
-			}
-			else {
-				var coloredOutput = hljs.highlight("cpp", finalOutput);
-				$('#output').html(coloredOutput.value);
-			}
+			var coloredOutput = hljs.highlight("cpp", finalOutput);
+			$('#output').html(coloredOutput.value);
 		}
 	});
 
