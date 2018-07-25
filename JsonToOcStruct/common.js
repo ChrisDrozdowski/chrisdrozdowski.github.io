@@ -75,6 +75,25 @@ $(function()
 		}
 	});
 
+	// Highlights the output for the user.
+	$('#output').click(function()
+	{
+		if (document.selection)
+		{
+			var range = document.body.createTextRange();
+			range.moveToElementText(this);
+			range.select();
+		}
+		else if (window.getSelection)
+		{
+			var range = document.createRange();
+			range.selectNode(this);
+			var sel = window.getSelection();
+			sel.removeAllRanges(); // required as of Chrome 60: https://www.chromestatus.com/features/6680566019653632
+			sel.addRange(range);
+		}
+	});
+
 	// Fill in sample JSON if the user wants to see an example.
 	$('#sample1').click(function()
 	{
