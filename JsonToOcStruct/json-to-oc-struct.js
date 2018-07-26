@@ -164,6 +164,10 @@ function jsonToOcStruct(json, verbose)
                 structs[current] += '\t// Member name is likely invalid.';
             }
 
+            if (verbose && varType.indexOf('null') > -1) {
+                structs[current] += '\t// Null value in JSON input is unknown data type.';
+            }
+
             if (verbose && varType.indexOf('__int64') > -1) {
                 structs[current] += '\t// May be double.';
             }
@@ -193,7 +197,7 @@ function jsonToOcStruct(json, verbose)
 
     function ocType(val) {
         if (null === val) {
-            return 'invalid';
+            return 'null';
         }
 
         switch (typeof val) {
