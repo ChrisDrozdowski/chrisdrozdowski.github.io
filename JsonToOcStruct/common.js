@@ -48,7 +48,7 @@ $(function()
 			return;
 		}
 
-		var output = jsonToOcStruct(input, verbose);
+		var output = JsonToOcStruct(input, verbose);
 
 		if (output.error) {
 			$('#output').html('<span class="clr-red">'+output.error+'</span>');

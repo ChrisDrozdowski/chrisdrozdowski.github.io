@@ -1,4 +1,4 @@
-/*! jsonToOcStruct 1.0.0
+/*! JsonToOcStruct 1.0.0
  *
  * Created by Chris Drozdowski (drozdowski.chris@gmail.com)
  *
@@ -8,7 +8,7 @@
  * Based on MIT-licensed project by Matt Holt (https://mholt.github.io/json-to-go/)
  */
 
-function jsonToOcStruct(json, verbose)
+function JsonToOcStruct(json, verbose)
 {
     var oc = '',
         data,
@@ -255,10 +255,10 @@ if (typeof module != 'undefined')
     if (!module.parent) {
         process.stdin.on('data', function(buf) {
             var json = buf.toString('utf8');
-            console.log(jsonToOcStruct(json).oc);
+            console.log(JsonToOcStruct(json).oc);
         })
     }
     else {
-        module.exports = jsonToOcStruct;
+        module.exports = JsonToOcStruct;
     }
 }
