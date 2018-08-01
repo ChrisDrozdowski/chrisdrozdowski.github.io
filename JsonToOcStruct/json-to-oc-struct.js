@@ -187,7 +187,12 @@ function JsonToOcStruct(json, verbose)
         }
 
         if (constructors.length > 0) {
-            structs[current] += '\tst' + current + '()\n\t{' + constructors + '\t}\n';
+            if (0 === current) {
+                structs[current] += '\tst' + main + '()\n\t{' + constructors + '\t}\n';
+            }
+            else {
+                structs[current] += '\tstChild_' + current + '()\n\t{' + constructors + '\t}\n';
+            }
         }
 
         structs[current] += '}\n';
