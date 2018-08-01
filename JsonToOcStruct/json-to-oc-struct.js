@@ -151,11 +151,15 @@ function jsonToOcStruct(json, verbose)
             structs[current] = 'struct stChild_' + current + ' {\n';
         }
 
-
         var varNames = Object.keys(scope);
         for (var i in varNames) {
-            var varName = varNames[i];
-            var varType = parseScope(scope[varName]);
+            var varName = varNames[i],
+                varType = parseScope(scope[varName]),
+                isNull = varType.indexOf('null') > -1;
+            
+            if (isNull) { // Comment out members whose value is null.
+                varType = '//???';
+            }
 
             structs[current] += '\t' + varType + ' ';
             structs[current] += ' ' + varName + ';';
@@ -164,8 +168,8 @@ function jsonToOcStruct(json, verbose)
                 structs[current] += '\t// Member name is likely invalid.';
             }
 
-            if (verbose && varType.indexOf('null') > -1) {
-                structs[current] += '\t// Null value in JSON input is unknown data type.';
+            if (verbose && isNull) { // Add comment about null value being ambiguous data type.
+                structs[current] += '\t// Null value in JSON input is an ambiguous data type.';
             }
 
             if (verbose && varType.indexOf('__int64') > -1) {
