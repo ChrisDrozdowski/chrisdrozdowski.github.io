@@ -1,4 +1,4 @@
-/*! JsonToOcStruct 1.0.0
+/*! JsonToOcStruct 1.0.1
  *
  * Created by Chris Drozdowski (drozdowski.chris@gmail.com)
  *
@@ -43,13 +43,13 @@ function JsonToOcStruct(json, verbose)
                 }
 
                 if (verbose) {
-                    oc += '// You can rename the structs but be thoughtful about it.\n\n';
+                    oc += '// Copy and paste this output to your Origin C source code file\n// where you will call JSON.ReadString.\n';
+                    oc += '// You can rename the structs but be thoughtful about it.\n';
+                    oc += '// You can also comment out specific struct members that may be\n// problematic and the JSON can still be converted (though\n// obviously without the member being present).\n\n';
                 }
 
-                for (var i = structs.length - 1; i >= 0; i--)
-                {
-                    if (verbose && 0 === i)
-                    {
+                for (var i = structs.length - 1; i >= 0; i--) {
+                    if (verbose && 0 === i) {
                         oc += '// This is the main struct to pass to JSON.ReadString in Origin C.\n'
                     }
                     oc += structs[i] + '\n';
@@ -81,6 +81,10 @@ function JsonToOcStruct(json, verbose)
 
     function parseArray(scope) {
         var scalarType;
+
+        if (0 === scope.length) { // Empty arrays are ambiguous. Vector?? Array of objects??
+            return 'empty';
+        }
 
         for (var i = 0; i < scope.length; i++) {
             var prevType,
@@ -132,7 +136,6 @@ function JsonToOcStruct(json, verbose)
         // JSON doesn't support arrays of arrays only array of objects.
         //if ('array' === currType && scope.length > 0) {
         //}
-
     }
 
     function parseStruct(scope) {
@@ -155,28 +158,42 @@ function JsonToOcStruct(json, verbose)
         for (var i in varNames) {
             var varName = varNames[i],
                 varType = parseScope(scope[varName]),
-                isNull = varType.indexOf('null') > -1;
-            
+                isInvalidName = !validName(varName),
+                isNull = ('null' === varType),
+                isEmptyArray = ('empty' === varType);
+
+            if (isInvalidName) { // Comment out members whose name is likely invalid.
+                varType = '//' + varType;
+            }
+
             if (isNull) { // Comment out members whose value is null.
-                varType = '//???';
+                varType = '//' + varType;
+            }
+
+            if (isEmptyArray) { // Comment out members who are empty arrays.
+                varType = '//' + varType;
             }
 
             structs[current] += '\t' + varType + ' ';
             structs[current] += ' ' + varName + ';';
 
-            if (verbose && !validName(varName)) {
-                structs[current] += '\t// Member name is likely invalid.';
+            if (verbose && isInvalidName) { // Add comment about likely invalid member name.
+                structs[current] += ' // Member name is likely invalid.';
             }
 
             if (verbose && isNull) { // Add comment about null value being ambiguous data type.
-                structs[current] += '\t// Null value in JSON input is an ambiguous data type.';
+                structs[current] += ' // Null value in JSON input is an ambiguous data type.';
+            }
+
+            if (verbose && isEmptyArray) { // Add comment about empty array being ambiguous data type.
+                structs[current] += ' // Empty array in JSON input is an ambiguous data type.';
             }
 
             if (verbose && varType.indexOf('__int64') > -1) {
-                structs[current] += '\t// May be double.';
+                structs[current] += ' // May be double.';
             }
             else if (verbose && varType.indexOf('int') > -1) {
-                structs[current] += '\t// May be __int64 or double.';
+                structs[current] += ' // May be __int64 or double.';
             }
 
             structs[current] += '\n';
@@ -231,7 +248,7 @@ function JsonToOcStruct(json, verbose)
 
             case 'object':
                 if (Array.isArray(val)) {
-                    return 'array';
+                    return 'Array';
                 }
                 else {
                     return 'struct';
