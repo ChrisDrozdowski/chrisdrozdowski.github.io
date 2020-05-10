@@ -1,0 +1,25 @@
+var classorglab__cpp_1_1note =
+[
+    [ "note", "classorglab__cpp_1_1note.html#a33dddc7f3875a2bc7145c555644d728b", null ],
+    [ "note", "classorglab__cpp_1_1note.html#a6b64beeea9cf149b269cd95c67ac4f59", null ],
+    [ "raw_ptr", "classorglab__cpp_1_1note.html#a7bc80836770b4e4e5ae7cc9d7241a46a", null ],
+    [ "is_valid", "classorglab__cpp_1_1note.html#a371f3dad361f126eed858fdd624673cc", null ],
+    [ "set_show", "classorglab__cpp_1_1note.html#a89c083c8f95ff2486753a784b75f2c36", null ],
+    [ "get_show", "classorglab__cpp_1_1note.html#a099290aae76144d1376bc75f8599cd85", null ],
+    [ "set_name", "classorglab__cpp_1_1note.html#aaffe7ade9274c7d3a6fa73a006da8ce0", null ],
+    [ "set_name", "classorglab__cpp_1_1note.html#ae69fcdaf90e81df135d21dba8a07f2c7", null ],
+    [ "get_name", "classorglab__cpp_1_1note.html#a1b032b3392ca2441204a3b1b7a44e6d5", null ],
+    [ "get_name", "classorglab__cpp_1_1note.html#a31183eb2ed321b51797b7590a0064880", null ],
+    [ "set_long_name", "classorglab__cpp_1_1note.html#a07263ddb622548144e69378730a08bb3", null ],
+    [ "set_long_name", "classorglab__cpp_1_1note.html#a09f31c814d13226e71d6d22fb89def23", null ],
+    [ "get_long_name", "classorglab__cpp_1_1note.html#a5f49bab0809e09f35ac95bb32262a77c", null ],
+    [ "get_long_name", "classorglab__cpp_1_1note.html#a60a5f67119cd6cb4a22f0506ab6371d4", null ],
+    [ "set_text", "classorglab__cpp_1_1note.html#a8d33bc8f2a3209ad797f55429f704c2b", null ],
+    [ "set_text", "classorglab__cpp_1_1note.html#a9ac28206c31a00cded0c53f76b948861", null ],
+    [ "get_text", "classorglab__cpp_1_1note.html#a3e5406bfa1608358343eb25ccae9f568", null ],
+    [ "get_text", "classorglab__cpp_1_1note.html#a34b81109a1c8dc146c7dc8d9b9f56c39", null ],
+    [ "write", "classorglab__cpp_1_1note.html#a3b52c7725b7b994d5f2c05a144892a78", null ],
+    [ "write", "classorglab__cpp_1_1note.html#a6372b6ba2dff50a77059bed732a2d818", null ],
+    [ "write_line", "classorglab__cpp_1_1note.html#a465f22b4cea1878e1fe5754964af9127", null ],
+    [ "write_line", "classorglab__cpp_1_1note.html#a9e9c5ac836c729ed9b9a74d2d23a0c4d", null ]
+];

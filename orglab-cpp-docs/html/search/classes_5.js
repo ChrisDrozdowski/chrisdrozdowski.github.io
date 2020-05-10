@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plot_234',['plot',['../classorglab__cpp_1_1plot.html',1,'orglab_cpp']]]
+  ['note_236',['note',['../classorglab__cpp_1_1note.html',1,'orglab_cpp']]]
 ];
