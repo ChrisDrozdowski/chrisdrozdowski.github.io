@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sampling_5finterval_239',['sampling_interval',['../classorglab__cpp_1_1sampling__interval.html',1,'orglab_cpp']]]
+  ['range_256',['range',['../classorglab__cpp_1_1range.html',1,'orglab_cpp']]]
 ];

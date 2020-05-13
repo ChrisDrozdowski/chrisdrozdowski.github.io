@@ -13,5 +13,19 @@ var classorglab__cpp_1_1graph =
     [ "add_layer", "classorglab__cpp_1_1graph.html#a97fb0464cac46034030abc5810e35250", null ],
     [ "get_layer", "classorglab__cpp_1_1graph.html#afddaecab325fc034bd87fd8edaef2877", null ],
     [ "get_layer", "classorglab__cpp_1_1graph.html#ae57309a5a11fd7c6688787ceae18820d", null ],
-    [ "get_layer", "classorglab__cpp_1_1graph.html#a61a13494377efdba686dd6ba901befd4", null ]
+    [ "get_layer", "classorglab__cpp_1_1graph.html#a61a13494377efdba686dd6ba901befd4", null ],
+    [ "get_layers", "classorglab__cpp_1_1graph.html#a601712eb5d8fec0b92777d21b57cebeb", null ],
+    [ "move_to_folder", "classorglab__cpp_1_1graph.html#aa212ba54fe928d38f64b9d7f5461fcc2", null ],
+    [ "set_name", "classorglab__cpp_1_1graph.html#ad36a762d7ad5a2a0982f927b6f2b3fcd", null ],
+    [ "set_name", "classorglab__cpp_1_1graph.html#aad26bed2106fc33e1aa2f7a7be6cb952", null ],
+    [ "get_name", "classorglab__cpp_1_1graph.html#a7007ee7889aa4c0fcb0476173e00b1e0", null ],
+    [ "get_name", "classorglab__cpp_1_1graph.html#a4403fdf5821cb20ba1fb46a51d7f6419", null ],
+    [ "set_long_name", "classorglab__cpp_1_1graph.html#abcabcc443d384aa2d8afa19689a99bbc", null ],
+    [ "set_long_name", "classorglab__cpp_1_1graph.html#abf6245accc1b92ce96739e75daf8384c", null ],
+    [ "get_long_name", "classorglab__cpp_1_1graph.html#a5f2f15fda835527b1bc2e14bdd354740", null ],
+    [ "get_long_name", "classorglab__cpp_1_1graph.html#ae478f9008644cab164d1bae77716956e", null ],
+    [ "set_comments", "classorglab__cpp_1_1graph.html#abf167b3273b7d61adf7230637843c214", null ],
+    [ "set_comments", "classorglab__cpp_1_1graph.html#ac38d543ff66e62be8cdf6373a6aed1fd", null ],
+    [ "get_comments", "classorglab__cpp_1_1graph.html#a96714e6cc66428d17c16ca81d5e05de2", null ],
+    [ "get_comments", "classorglab__cpp_1_1graph.html#aefcd1c926a89661c8054460b510fa0f8", null ]
 ];

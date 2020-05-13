@@ -14,10 +14,18 @@ var classorglab__cpp_1_1workbook =
     [ "get_sheet", "classorglab__cpp_1_1workbook.html#adafd5b6658ea8bfc2d41d20b7a19e2ce", null ],
     [ "get_sheet", "classorglab__cpp_1_1workbook.html#a8710c73e997f547e355de878841f5004", null ],
     [ "get_sheet", "classorglab__cpp_1_1workbook.html#a12b4b81a35077fb02d66338d72cc669a", null ],
+    [ "get_worksheets", "classorglab__cpp_1_1workbook.html#a70e3479529c91b0cc2d0589407df5343", null ],
+    [ "move_to_folder", "classorglab__cpp_1_1workbook.html#a3fe1acbebced48ea3f159d536594e899", null ],
+    [ "set_name", "classorglab__cpp_1_1workbook.html#a7db89da6d08b24ea6eeddf952e17bc9e", null ],
+    [ "set_name", "classorglab__cpp_1_1workbook.html#a637351822680c1731c8c319f2e7de1b4", null ],
     [ "get_name", "classorglab__cpp_1_1workbook.html#ac285cce5cf0cabc7b18d083d405943d0", null ],
     [ "get_name", "classorglab__cpp_1_1workbook.html#a0f43873f36620bdfb7b621a2db1996d7", null ],
+    [ "set_long_name", "classorglab__cpp_1_1workbook.html#a439ea4f813f3b4e0bb124648834216f7", null ],
+    [ "set_long_name", "classorglab__cpp_1_1workbook.html#aaecdef84ac9412c1a6a812b100e753c6", null ],
     [ "get_long_name", "classorglab__cpp_1_1workbook.html#aaf936565d5b4a2e8daa4651e2c7b3055", null ],
     [ "get_long_name", "classorglab__cpp_1_1workbook.html#acb1f9f5bb84a529d225c8a24f6c32768", null ],
+    [ "set_comments", "classorglab__cpp_1_1workbook.html#adaa0b1b80bf3e2fe61d5232723155afb", null ],
+    [ "set_comments", "classorglab__cpp_1_1workbook.html#a9476da993ab957c6eab228c2975b3ada", null ],
     [ "get_comments", "classorglab__cpp_1_1workbook.html#a8d4b5b5a32e9054b1adf40ecccef83ab", null ],
     [ "get_comments", "classorglab__cpp_1_1workbook.html#aae5e8075a0c0f9b1f1c667b7086eb2eb", null ]
 ];

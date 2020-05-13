@@ -6,6 +6,7 @@ var classorglab__cpp_1_1note =
     [ "is_valid", "classorglab__cpp_1_1note.html#a371f3dad361f126eed858fdd624673cc", null ],
     [ "set_show", "classorglab__cpp_1_1note.html#a89c083c8f95ff2486753a784b75f2c36", null ],
     [ "get_show", "classorglab__cpp_1_1note.html#a099290aae76144d1376bc75f8599cd85", null ],
+    [ "move_to_folder", "classorglab__cpp_1_1note.html#abc1c188f166dd3ccb07fa084102a559c", null ],
     [ "set_name", "classorglab__cpp_1_1note.html#aaffe7ade9274c7d3a6fa73a006da8ce0", null ],
     [ "set_name", "classorglab__cpp_1_1note.html#ae69fcdaf90e81df135d21dba8a07f2c7", null ],
     [ "get_name", "classorglab__cpp_1_1note.html#a1b032b3392ca2441204a3b1b7a44e6d5", null ],

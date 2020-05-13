@@ -2,6 +2,7 @@ var namespaceorglab__cpp =
 [
     [ "application", "classorglab__cpp_1_1application.html", "classorglab__cpp_1_1application" ],
     [ "column", "classorglab__cpp_1_1column.html", "classorglab__cpp_1_1column" ],
+    [ "folder", "classorglab__cpp_1_1folder.html", "classorglab__cpp_1_1folder" ],
     [ "graph", "classorglab__cpp_1_1graph.html", "classorglab__cpp_1_1graph" ],
     [ "graphobject", "classorglab__cpp_1_1graphobject.html", "classorglab__cpp_1_1graphobject" ],
     [ "layer", "classorglab__cpp_1_1layer.html", "classorglab__cpp_1_1layer" ],

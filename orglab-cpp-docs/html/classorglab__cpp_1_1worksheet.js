@@ -14,10 +14,16 @@ var classorglab__cpp_1_1worksheet =
     [ "get_column", "classorglab__cpp_1_1worksheet.html#a9f40b5da227c1a789ef6c74b236eac25", null ],
     [ "get_column", "classorglab__cpp_1_1worksheet.html#aa3ab127a5f962576e97eddec50d6476f", null ],
     [ "get_index", "classorglab__cpp_1_1worksheet.html#a7757087538bc922217a33d522ea12b45", null ],
+    [ "set_name", "classorglab__cpp_1_1worksheet.html#a0fe8c6f46048d789bc0560072ffdedcb", null ],
+    [ "set_name", "classorglab__cpp_1_1worksheet.html#ad0b7b0a06351edb96ef5a1c85ef94b5b", null ],
     [ "get_name", "classorglab__cpp_1_1worksheet.html#a4dbb6c2121de2f01c34080543eed51a4", null ],
     [ "get_name", "classorglab__cpp_1_1worksheet.html#a03c3fbf588b011e5e7d681b8207b68bd", null ],
+    [ "set_long_name", "classorglab__cpp_1_1worksheet.html#a2976b6278671684787051be35a368cf5", null ],
+    [ "set_long_name", "classorglab__cpp_1_1worksheet.html#a4883f62967ff8fab923445170ac3329f", null ],
     [ "get_long_name", "classorglab__cpp_1_1worksheet.html#a678602405c8a358352ef196751019964", null ],
     [ "get_long_name", "classorglab__cpp_1_1worksheet.html#a9a006c1c97d440a3fb7dec1d05e4725f", null ],
     [ "set_columns", "classorglab__cpp_1_1worksheet.html#ae7719a9eab90854465b339f3e5eee884", null ],
-    [ "get_columns", "classorglab__cpp_1_1worksheet.html#aed3c2e3987f881c4cfdb609acfbd6e37", null ]
+    [ "get_columns", "classorglab__cpp_1_1worksheet.html#aed3c2e3987f881c4cfdb609acfbd6e37", null ],
+    [ "set_label_rows", "classorglab__cpp_1_1worksheet.html#aae481d13dba51c9cc3c862a9aa712148", null ],
+    [ "set_label_rows", "classorglab__cpp_1_1worksheet.html#a31a61554292d544e590a1ddc46d962d9", null ]
 ];

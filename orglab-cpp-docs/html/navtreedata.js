@@ -47,7 +47,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classorglab__cpp_1_1matrixsheet.html#a8f7c6896d06af2a3bc5f8dbbf99044d9"
+"classorglab__cpp_1_1matrix__adapter.html#a72e05272650209bc62cbac8256e3c204"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
