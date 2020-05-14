@@ -39,6 +39,7 @@ var classorglab__cpp_1_1application =
     [ "workbooks", "classorglab__cpp_1_1application.html#a219875eaf0d272a829783edccc4c5538", null ],
     [ "matrixbooks", "classorglab__cpp_1_1application.html#a321bd5b6b783d4dad5286e41439368f4", null ],
     [ "graphs", "classorglab__cpp_1_1application.html#a8687ac6e346ad90c89efd6c15b779ecd", null ],
+    [ "pagebases", "classorglab__cpp_1_1application.html#a45fd956e3d4d588483ad5c6b8dd2db9b", null ],
     [ "get_root_folder", "classorglab__cpp_1_1application.html#a919de72a702cec5e95dbd6ed45b938e0", null ],
     [ "get_active_folder", "classorglab__cpp_1_1application.html#a5ac639c94119f4273e2ec33995ab135b", null ],
     [ "labtalk_execute", "classorglab__cpp_1_1application.html#a2107b6d43037c792348be266b06abe59", null ],

@@ -11,6 +11,7 @@ var namespaceorglab__cpp =
     [ "matrixbook", "classorglab__cpp_1_1matrixbook.html", "classorglab__cpp_1_1matrixbook" ],
     [ "matrixsheet", "classorglab__cpp_1_1matrixsheet.html", "classorglab__cpp_1_1matrixsheet" ],
     [ "note", "classorglab__cpp_1_1note.html", "classorglab__cpp_1_1note" ],
+    [ "pagebase", "classorglab__cpp_1_1pagebase.html", "classorglab__cpp_1_1pagebase" ],
     [ "plot", "classorglab__cpp_1_1plot.html", "classorglab__cpp_1_1plot" ],
     [ "range", "classorglab__cpp_1_1range.html", "classorglab__cpp_1_1range" ],
     [ "sampling_interval", "classorglab__cpp_1_1sampling__interval.html", "classorglab__cpp_1_1sampling__interval" ],

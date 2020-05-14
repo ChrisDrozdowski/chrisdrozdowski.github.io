@@ -2,7 +2,7 @@ var classorglab__cpp_1_1worksheet =
 [
     [ "worksheet", "classorglab__cpp_1_1worksheet.html#aca8d3593d49c4f12529b7d0b6edf83d9", null ],
     [ "worksheet", "classorglab__cpp_1_1worksheet.html#ac0bb9e226da40e5ac2fc4e2360f369ee", null ],
-    [ "columns", "classorglab__cpp_1_1worksheet.html#a3fdd54705537b44d25bf700efe77ce53", null ],
+    [ "columns", "classorglab__cpp_1_1worksheet.html#a7508f44ad7a7f4a5ab8885630fc52b6d", null ],
     [ "raw_ptr", "classorglab__cpp_1_1worksheet.html#a4f0c47e2f433dedbfdf7dce4f25ea746", null ],
     [ "is_valid", "classorglab__cpp_1_1worksheet.html#aa507c3d2d7e4095a90f34d423b72c548", null ],
     [ "get_parent", "classorglab__cpp_1_1worksheet.html#ada2450c9a578a01b7f067c5b9e9809ae", null ],

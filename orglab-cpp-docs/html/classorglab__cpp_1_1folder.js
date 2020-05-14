@@ -2,6 +2,7 @@ var classorglab__cpp_1_1folder =
 [
     [ "folder", "classorglab__cpp_1_1folder.html#ae6237725f91311c5a488df94b1598832", null ],
     [ "folder", "classorglab__cpp_1_1folder.html#a192472d698771c78fb054427ef00c92b", null ],
+    [ "pagebases", "classorglab__cpp_1_1folder.html#a62f5d38a5b42519a744fd1b3cc5ffad9", null ],
     [ "subfolders", "classorglab__cpp_1_1folder.html#a96c1919cb2a56a557ca526e6b9e30abb", null ],
     [ "raw_ptr", "classorglab__cpp_1_1folder.html#adfe852a6a024b72de1e4b1b5e8503279", null ],
     [ "is_valid", "classorglab__cpp_1_1folder.html#a085144d0d19520d17fd488ed7efcb183", null ],
@@ -11,6 +12,8 @@ var classorglab__cpp_1_1folder =
     [ "add_subfolder", "classorglab__cpp_1_1folder.html#abace661ee3ec17fb6a578b87e03be2b1", null ],
     [ "get_subfolder", "classorglab__cpp_1_1folder.html#ac84c78512bc241ebcb823fec5af774f5", null ],
     [ "get_subfolder", "classorglab__cpp_1_1folder.html#a8847ead7e7f2e2cfd4ebb5c302007640", null ],
+    [ "get_subfolders", "classorglab__cpp_1_1folder.html#a08a4dc86164ed22cb99663200c7312f2", null ],
+    [ "get_pagebases", "classorglab__cpp_1_1folder.html#acf10d6aa1b2822c1e8fc6502cc3216ca", null ],
     [ "set_name", "classorglab__cpp_1_1folder.html#a6e0df8ad668072c2af306161d4bef520", null ],
     [ "set_name", "classorglab__cpp_1_1folder.html#a05bf3323a1a8d9daea8cb3ed478dc7bc", null ],
     [ "get_name", "classorglab__cpp_1_1folder.html#aa54d59068f95f866adc4a2386f8d6e1f", null ],
