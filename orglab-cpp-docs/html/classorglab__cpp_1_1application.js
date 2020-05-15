@@ -45,5 +45,7 @@ var classorglab__cpp_1_1application =
     [ "labtalk_execute", "classorglab__cpp_1_1application.html#a2107b6d43037c792348be266b06abe59", null ],
     [ "labtalk_execute", "classorglab__cpp_1_1application.html#af337503f522a3a2e84e9660de019a67f", null ],
     [ "get_user_files_folder", "classorglab__cpp_1_1application.html#abbd4c1c6ea202760c4ff13cbbdb24b76", null ],
-    [ "get_user_files_folder", "classorglab__cpp_1_1application.html#a99549f9d36e70d092294afce42b8bf2d", null ]
+    [ "get_user_files_folder", "classorglab__cpp_1_1application.html#a99549f9d36e70d092294afce42b8bf2d", null ],
+    [ "get_exe_folder", "classorglab__cpp_1_1application.html#a9728c4428afaa86cad2f7c8907ad7bdd", null ],
+    [ "get_exe_folder", "classorglab__cpp_1_1application.html#ae722e812cbfbcbbfacbb4a26667c8a58", null ]
 ];

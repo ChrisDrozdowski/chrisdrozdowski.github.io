@@ -727,212 +727,222 @@ $(document).ready(function(){initNavTree('orglab__cpp__application_8hpp_source.h
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespaceorglab__cpp.html#a0355518dbb52f8461bc45f657114a11c">from_wide</a>(get_user_files_folder&lt;std::wstring&gt;());</div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;        }</div>
 <div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160; </div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;        orglab::PagePtr create_book_page(<span class="keyword">const</span> orglab::PAGETYPES&amp; pg_type) {</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;            orglab::PagePtr page_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                <span class="keywordflow">if</span> (orglab::PAGETYPES::OPT_WORKSHEET == pg_type)</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                    page_ptr = app_-&gt;WorksheetPages-&gt;Add();</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (orglab::PAGETYPES::OPT_MATRIX == pg_type)</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                    page_ptr = app_-&gt;MatrixPages-&gt;Add();</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                    <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160; </div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                <span class="keywordflow">if</span> (!page_ptr)</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                    <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160; </div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                <span class="comment">// All books will be created with 1 sheet by default.</span></div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                <span class="comment">// So, set defaults for that sheet before adding more.</span></div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                <span class="keywordflow">if</span> (page_ptr-&gt;Layers-&gt;Count &lt; 1)</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                    <span class="keywordflow">return</span> page_ptr;</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                <span class="keywordflow">if</span> (page_ptr &amp;&amp; orglab::PAGETYPES::OPT_MATRIX == pg_type) {</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                    orglab::MatrixSheetPtr sheet_ptr = page_ptr-&gt;Layers-&gt;Item[0];</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                    <span class="keywordflow">if</span> (sheet_ptr) {</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                        sheet_ptr-&gt;Rows = default_mat_dims.first;</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                        sheet_ptr-&gt;Cols = default_mat_dims.second;</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                        sheet_ptr-&gt;Mats = default_mats;</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                    }</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                }</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (page_ptr &amp;&amp; orglab::PAGETYPES::OPT_WORKSHEET == pg_type) {</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                    orglab::WorksheetPtr sheet_ptr = page_ptr-&gt;Layers-&gt;Item[0];</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                    <span class="keywordflow">if</span> (sheet_ptr) {</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                        sheet_ptr-&gt;Labels(<a class="code" href="namespaceorglab__cpp.html#afd0e9932918b2052c2f8645b15c1896b">to_bstr_t</a>(default_label_rows));</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                        sheet_ptr-&gt;Cols = default_cols;</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                    }</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                }</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160; </div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;            }</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;            }</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;        }</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160; </div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;        orglab::PagePtr create_book_page(<span class="keyword">const</span> orglab::PAGETYPES&amp; pg_type, <span class="keyword">const</span> std::wstring&amp; user_template) {</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                <span class="keywordflow">if</span> ((user_template.length() &gt; 0)</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                    &amp;&amp; (<a class="code" href="namespaceorglab__cpp.html#aa01b87148e5997537bedb69383330f81">is_valid_extention</a>(user_template, L<span class="stringliteral">&quot;ogwu&quot;</span>, L<span class="stringliteral">&quot;ogmu&quot;</span>, L<span class="stringliteral">&quot;ogw&quot;</span>, L<span class="stringliteral">&quot;ogm&quot;</span>))</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                    &amp;&amp; (<a class="code" href="namespaceorglab__cpp.html#a302d0c11428c4ff80af2bb0faad20a86">is_origin_file</a>(user_template))) {</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                        std::wstring lt = L<span class="stringliteral">&quot;document -o &quot;</span> + get_short_path(user_template) + L<span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                        <span class="keywordflow">if</span> (VARIANT_TRUE != app_-&gt;Execute(_bstr_t(lt.c_str())))</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                            <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                        <span class="keywordflow">return</span> app_-&gt;ActivePage;</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                }</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                    <span class="keywordflow">return</span> create_book_page(pg_type);</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;            }</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;            }</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;        }</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160; </div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;        orglab::PagePtr get_book_page(<span class="keyword">const</span> std::wstring&amp; name) {</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            orglab::PagePtr page_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;            <span class="keywordflow">if</span> (0 == name.length())</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                _bstr_t bstr(name.c_str());</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                orglab::DatasheetPtr sheet_ptr;</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                sheet_ptr = app_-&gt;FindWorksheet(L<span class="stringliteral">&quot;[&quot;</span> + bstr + L<span class="stringliteral">&quot;]1&quot;</span>);</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                <span class="keywordflow">if</span> (!sheet_ptr)</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                    sheet_ptr = app_-&gt;FindMatrixSheet(L<span class="stringliteral">&quot;[&quot;</span> + bstr + L<span class="stringliteral">&quot;]1&quot;</span>);</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                <span class="keywordflow">if</span> (sheet_ptr)</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                    page_ptr = sheet_ptr-&gt;GetParent();</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160; </div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                <span class="comment">// Allow to not find without exception.</span></div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                <span class="comment">//if (!page_ptr)</span></div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                    <span class="comment">//throw std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</span></div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160; </div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            }</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            }</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        }</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160; </div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;<span class="comment">// Automation Server only.</span></div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;<span class="preprocessor">#ifdef ORGLAB_CPP_USE_ORIGIN</span></div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;        orglab::GraphPagePtr create_graph_page(<span class="keyword">const</span> std::wstring&amp; user_template = L<span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;            orglab::GraphPagePtr page_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                <span class="keywordflow">if</span> ((user_template.length() &gt; 0)</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                    &amp;&amp; (<a class="code" href="namespaceorglab__cpp.html#aa01b87148e5997537bedb69383330f81">is_valid_extention</a>(user_template, L<span class="stringliteral">&quot;otpu&quot;</span>, L<span class="stringliteral">&quot;otp&quot;</span>))</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                        &amp;&amp; (<a class="code" href="namespaceorglab__cpp.html#a302d0c11428c4ff80af2bb0faad20a86">is_origin_file</a>(user_template))) {</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                    <span class="keywordflow">return</span> app_-&gt;GraphPages-&gt;Add(<a class="code" href="namespaceorglab__cpp.html#afd0e9932918b2052c2f8645b15c1896b">to_bstr_t</a>(user_template));</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;                }</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;                    <span class="keywordflow">return</span> app_-&gt;GraphPages-&gt;Add(<a class="code" href="namespaceorglab__cpp.html#afd0e9932918b2052c2f8645b15c1896b">to_bstr_t</a>(L<span class="stringliteral">&quot;Origin&quot;</span>));</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;            }</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;            }</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;        }</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160; </div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        orglab::GraphPagePtr get_graph_page(<span class="keyword">const</span> std::wstring&amp; name) {</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;            orglab::GraphPagePtr page_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;            <span class="keywordflow">if</span> (0 == name.length())</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;                _bstr_t bstr(name.c_str());</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;                orglab::GraphLayerPtr layer_ptr;</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;                layer_ptr = app_-&gt;FindGraphLayer(L<span class="stringliteral">&quot;[&quot;</span> + bstr + L<span class="stringliteral">&quot;]1&quot;</span>);</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                <span class="keywordflow">if</span> (layer_ptr)</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                    page_ptr = layer_ptr-&gt;GetParent();</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160; </div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;                <span class="comment">// Allow to not find without exception.</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                <span class="comment">//if (!page_ptr)</span></div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                    <span class="comment">//throw std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</span></div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160; </div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;            }</div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            }</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;        }</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160; </div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;        orglab::NotePtr create_note_page() {</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;            orglab::NotePtr page_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                page_ptr = get_note_page(<a class="code" href="namespaceorglab__cpp.html#a45fdddcddc2ba8cf7554bb0ad440f4c9">to_wide</a>(app_-&gt;CreatePage(orglab::PAGETYPES::OPT_NOTES))); <span class="comment">// No Notes collection.</span></div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T get_exe_folder() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00720"></a><span class="lineno"><a class="line" href="classorglab__cpp_1_1application.html#a9728c4428afaa86cad2f7c8907ad7bdd">  720</a></span>&#160;        <span class="keyword">template</span>&lt;&gt; std::wstring <a class="code" href="classorglab__cpp_1_1application.html#a9728c4428afaa86cad2f7c8907ad7bdd">get_exe_folder</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespaceorglab__cpp.html#a45fdddcddc2ba8cf7554bb0ad440f4c9">to_wide</a>(app_-&gt;Path(orglab::APPPATH_TYPES::APPPATH_PROGRAM));</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        }</div>
+<div class="line"><a name="l00727"></a><span class="lineno"><a class="line" href="classorglab__cpp_1_1application.html#ae722e812cbfbcbbfacbb4a26667c8a58">  727</a></span>&#160;        <span class="keyword">template</span>&lt;&gt; std::string <a class="code" href="classorglab__cpp_1_1application.html#ae722e812cbfbcbbfacbb4a26667c8a58">get_exe_folder</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespaceorglab__cpp.html#a0355518dbb52f8461bc45f657114a11c">from_wide</a>(get_exe_folder&lt;std::wstring&gt;());</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        }</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160; </div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        orglab::PagePtr create_book_page(<span class="keyword">const</span> orglab::PAGETYPES&amp; pg_type) {</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;            orglab::PagePtr page_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                <span class="keywordflow">if</span> (orglab::PAGETYPES::OPT_WORKSHEET == pg_type)</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                    page_ptr = app_-&gt;WorksheetPages-&gt;Add();</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (orglab::PAGETYPES::OPT_MATRIX == pg_type)</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                    page_ptr = app_-&gt;MatrixPages-&gt;Add();</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                    <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160; </div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                <span class="keywordflow">if</span> (!page_ptr)</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                    <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160; </div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                <span class="comment">// All books will be created with 1 sheet by default.</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                <span class="comment">// So, set defaults for that sheet before adding more.</span></div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                <span class="keywordflow">if</span> (page_ptr-&gt;Layers-&gt;Count &lt; 1)</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                    <span class="keywordflow">return</span> page_ptr;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                <span class="keywordflow">if</span> (page_ptr &amp;&amp; orglab::PAGETYPES::OPT_MATRIX == pg_type) {</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                    orglab::MatrixSheetPtr sheet_ptr = page_ptr-&gt;Layers-&gt;Item[0];</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                    <span class="keywordflow">if</span> (sheet_ptr) {</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                        sheet_ptr-&gt;Rows = default_mat_dims.first;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                        sheet_ptr-&gt;Cols = default_mat_dims.second;</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                        sheet_ptr-&gt;Mats = default_mats;</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                    }</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                }</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (page_ptr &amp;&amp; orglab::PAGETYPES::OPT_WORKSHEET == pg_type) {</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                    orglab::WorksheetPtr sheet_ptr = page_ptr-&gt;Layers-&gt;Item[0];</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                    <span class="keywordflow">if</span> (sheet_ptr) {</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                        sheet_ptr-&gt;Labels(<a class="code" href="namespaceorglab__cpp.html#afd0e9932918b2052c2f8645b15c1896b">to_bstr_t</a>(default_label_rows));</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                        sheet_ptr-&gt;Cols = default_cols;</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                    }</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                }</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160; </div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;            }</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;            }</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;        }</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160; </div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;        orglab::PagePtr create_book_page(<span class="keyword">const</span> orglab::PAGETYPES&amp; pg_type, <span class="keyword">const</span> std::wstring&amp; user_template) {</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                <span class="keywordflow">if</span> ((user_template.length() &gt; 0)</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                    &amp;&amp; (<a class="code" href="namespaceorglab__cpp.html#aa01b87148e5997537bedb69383330f81">is_valid_extention</a>(user_template, L<span class="stringliteral">&quot;ogwu&quot;</span>, L<span class="stringliteral">&quot;ogmu&quot;</span>, L<span class="stringliteral">&quot;ogw&quot;</span>, L<span class="stringliteral">&quot;ogm&quot;</span>))</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;                    &amp;&amp; (<a class="code" href="namespaceorglab__cpp.html#a302d0c11428c4ff80af2bb0faad20a86">is_origin_file</a>(user_template))) {</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                        std::wstring lt = L<span class="stringliteral">&quot;document -o &quot;</span> + get_short_path(user_template) + L<span class="stringliteral">&quot;;&quot;</span>;</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                        <span class="keywordflow">if</span> (VARIANT_TRUE != app_-&gt;Execute(_bstr_t(lt.c_str())))</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                            <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                        <span class="keywordflow">return</span> app_-&gt;ActivePage;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                }</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                    <span class="keywordflow">return</span> create_book_page(pg_type);</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;            }</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;            }</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        }</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160; </div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;        orglab::PagePtr get_book_page(<span class="keyword">const</span> std::wstring&amp; name) {</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;            orglab::PagePtr page_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;            <span class="keywordflow">if</span> (0 == name.length())</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                _bstr_t bstr(name.c_str());</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                orglab::DatasheetPtr sheet_ptr;</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                sheet_ptr = app_-&gt;FindWorksheet(L<span class="stringliteral">&quot;[&quot;</span> + bstr + L<span class="stringliteral">&quot;]1&quot;</span>);</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                <span class="keywordflow">if</span> (!sheet_ptr)</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                    sheet_ptr = app_-&gt;FindMatrixSheet(L<span class="stringliteral">&quot;[&quot;</span> + bstr + L<span class="stringliteral">&quot;]1&quot;</span>);</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                <span class="keywordflow">if</span> (sheet_ptr)</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                    page_ptr = sheet_ptr-&gt;GetParent();</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160; </div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                <span class="comment">// Allow to not find without exception.</span></div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                <span class="comment">//if (!page_ptr)</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;                    <span class="comment">//throw std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</span></div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160; </div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;            }</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;            }</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;        }</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160; </div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;<span class="comment">// Automation Server only.</span></div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="preprocessor">#ifdef ORGLAB_CPP_USE_ORIGIN</span></div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        orglab::GraphPagePtr create_graph_page(<span class="keyword">const</span> std::wstring&amp; user_template = L<span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;            orglab::GraphPagePtr page_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;                <span class="keywordflow">if</span> ((user_template.length() &gt; 0)</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                    &amp;&amp; (<a class="code" href="namespaceorglab__cpp.html#aa01b87148e5997537bedb69383330f81">is_valid_extention</a>(user_template, L<span class="stringliteral">&quot;otpu&quot;</span>, L<span class="stringliteral">&quot;otp&quot;</span>))</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                        &amp;&amp; (<a class="code" href="namespaceorglab__cpp.html#a302d0c11428c4ff80af2bb0faad20a86">is_origin_file</a>(user_template))) {</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                    <span class="keywordflow">return</span> app_-&gt;GraphPages-&gt;Add(<a class="code" href="namespaceorglab__cpp.html#afd0e9932918b2052c2f8645b15c1896b">to_bstr_t</a>(user_template));</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;                }</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;                    <span class="keywordflow">return</span> app_-&gt;GraphPages-&gt;Add(<a class="code" href="namespaceorglab__cpp.html#afd0e9932918b2052c2f8645b15c1896b">to_bstr_t</a>(L<span class="stringliteral">&quot;Origin&quot;</span>));</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;            }</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;            }</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;        }</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160; </div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;        orglab::GraphPagePtr get_graph_page(<span class="keyword">const</span> std::wstring&amp; name) {</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;            orglab::GraphPagePtr page_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;            <span class="keywordflow">if</span> (0 == name.length())</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;                _bstr_t bstr(name.c_str());</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                orglab::GraphLayerPtr layer_ptr;</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                layer_ptr = app_-&gt;FindGraphLayer(L<span class="stringliteral">&quot;[&quot;</span> + bstr + L<span class="stringliteral">&quot;]1&quot;</span>);</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                <span class="keywordflow">if</span> (layer_ptr)</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                    page_ptr = layer_ptr-&gt;GetParent();</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160; </div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                <span class="comment">// Allow to not find without exception.</span></div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                <span class="comment">//if (!page_ptr)</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;                    <span class="comment">//throw std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</span></div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160; </div>
 <div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;            }</div>
 <div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
 <div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;            }</div>
 <div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;        }</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160; </div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;        orglab::NotePtr get_note_page(<span class="keyword">const</span> std::wstring&amp; name) {</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;            orglab::NotePtr page_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;            <span class="keywordflow">if</span> (0 == name.length())</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                _bstr_t bstr(name.c_str());</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                <span class="keywordtype">long</span> count = app_-&gt;Notes-&gt;Count;</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">long</span> i = 0; i &lt; count; ++i) {</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;                    orglab::NotePtr temp_ptr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;                    temp_ptr = app_-&gt;Notes-&gt;Item[i];</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;                    <span class="keywordflow">if</span> (temp_ptr &amp;&amp; bstr == temp_ptr-&gt;Name) {</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;                        page_ptr = temp_ptr;</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;                    }</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;                }</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160; </div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;                <span class="comment">// Allow to not find without exception.</span></div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;                <span class="comment">//if (!page_ptr)</span></div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;                    <span class="comment">//throw std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</span></div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160; </div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;            }</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;            }</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;        }</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160; </div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    };</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160; </div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160; </div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;        orglab::NotePtr create_note_page() {</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;            orglab::NotePtr page_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;                page_ptr = get_note_page(<a class="code" href="namespaceorglab__cpp.html#a45fdddcddc2ba8cf7554bb0ad440f4c9">to_wide</a>(app_-&gt;CreatePage(orglab::PAGETYPES::OPT_NOTES))); <span class="comment">// No Notes collection.</span></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;            }</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::create_obj_fail));</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;            }</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;        }</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160; </div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;        orglab::NotePtr get_note_page(<span class="keyword">const</span> std::wstring&amp; name) {</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;            <span class="keywordflow">if</span> (!app_)</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::ccomptr_invalid));</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;            orglab::NotePtr page_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;            <span class="keywordflow">if</span> (0 == name.length())</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;                _bstr_t bstr(name.c_str());</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;                <span class="keywordtype">long</span> count = app_-&gt;Notes-&gt;Count;</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">long</span> i = 0; i &lt; count; ++i) {</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;                    orglab::NotePtr temp_ptr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;                    temp_ptr = app_-&gt;Notes-&gt;Item[i];</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;                    <span class="keywordflow">if</span> (temp_ptr &amp;&amp; bstr == temp_ptr-&gt;Name) {</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;                        page_ptr = temp_ptr;</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;                    }</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;                }</div>
 <div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160; </div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;<span class="comment">    * Helper class for orglab_cpp class to ensure that an opened Origin project is always closed.</span></div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;<span class="comment">    * Closes any currently opened project when an instance of the class goes out of scope.</span></div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;<span class="comment">    * NOT thread safe but OrgLab isn&#39;t, so it doesn&#39;t matter.</span></div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;<span class="comment">    */</span></div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;    <span class="keyword">class </span>project_close_helper {</div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;        project_close_helper(){}</div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160; </div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;        ~project_close_helper() {</div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;                application&amp; app = <a class="code" href="classorglab__cpp_1_1application.html#a4ab82db723c878dc36597d229fa6fb64">application::get_instance</a>();</div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;                app.close_project();</div>
-<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;            }</div>
-<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;            <span class="keywordflow">catch</span> (...) {}</div>
-<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;        }</div>
-<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160; </div>
-<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;        <span class="comment">// Delete copy and move constructors/assigns.</span></div>
-<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;        project_close_helper(<span class="keyword">const</span> project_close_helper&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;        project_close_helper&amp; operator=(<span class="keyword">const</span> project_close_helper&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;        project_close_helper(project_close_helper&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;        project_close_helper&amp; operator=(project_close_helper&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;                <span class="comment">// Allow to not find without exception.</span></div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;                <span class="comment">//if (!page_ptr)</span></div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;                    <span class="comment">//throw std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</span></div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160; </div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;                <span class="keywordflow">return</span> page_ptr;</div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;            }</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;            <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;                <span class="keywordflow">throw</span> std::exception(OLCP_EXCEPTION_MSG(msgs::get_obj_fail));</div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;            }</div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;        }</div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160; </div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;    };</div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160; </div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160; </div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;<span class="comment">    * Helper class for orglab_cpp class to ensure that an opened Origin project is always closed.</span></div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;<span class="comment">    * Closes any currently opened project when an instance of the class goes out of scope.</span></div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;<span class="comment">    * NOT thread safe but OrgLab isn&#39;t, so it doesn&#39;t matter.</span></div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;    <span class="keyword">class </span>project_close_helper {</div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;        project_close_helper(){}</div>
 <div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160; </div>
-<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;    };</div>
-<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;}</div>
-<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160; </div>
-<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ORGLAB_CPP_APPLICATION_HPP */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;        ~project_close_helper() {</div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;                application&amp; app = <a class="code" href="classorglab__cpp_1_1application.html#a4ab82db723c878dc36597d229fa6fb64">application::get_instance</a>();</div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;                app.close_project();</div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;            }</div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;            <span class="keywordflow">catch</span> (...) {}</div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;        }</div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160; </div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;        <span class="comment">// Delete copy and move constructors/assigns.</span></div>
+<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;        project_close_helper(<span class="keyword">const</span> project_close_helper&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;        project_close_helper&amp; operator=(<span class="keyword">const</span> project_close_helper&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;        project_close_helper(project_close_helper&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;        project_close_helper&amp; operator=(project_close_helper&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160; </div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;    };</div>
+<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;}</div>
+<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160; </div>
+<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ORGLAB_CPP_APPLICATION_HPP */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespaceorglab__cpp_html_a0355518dbb52f8461bc45f657114a11c"><div class="ttname"><a href="namespaceorglab__cpp.html#a0355518dbb52f8461bc45f657114a11c">orglab_cpp::from_wide</a></div><div class="ttdeci">std::string from_wide(const std::wstring &amp;wstr)</div><div class="ttdef"><b>Definition:</b> orglab_cpp_utils.hpp:28</div></div>
@@ -967,6 +977,7 @@ $(document).ready(function(){initNavTree('orglab__cpp__application_8hpp_source.h
 <div class="ttc" id="aclassorglab__cpp_1_1application_html_aae628617bc00b9141beadddb96f08107"><div class="ttname"><a href="classorglab__cpp_1_1application.html#aae628617bc00b9141beadddb96f08107">orglab_cpp::application::get_graph</a></div><div class="ttdeci">graph get_graph(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> orglab_cpp_application.hpp:382</div></div>
 <div class="ttc" id="anamespaceorglab__cpp_html_a7b041c516bad6e1142d85a8d18d6d9f3a732bf94c458b65fe83ea38f3b0f82735"><div class="ttname"><a href="namespaceorglab__cpp.html#a7b041c516bad6e1142d85a8d18d6d9f3a732bf94c458b65fe83ea38f3b0f82735">orglab_cpp::return_values::invalid_dir</a></div><div class="ttdoc">Invalid file system directory.</div></div>
 <div class="ttc" id="aclassorglab__cpp_1_1application_html_a09a82eb53fa8c9307319180069aa085c"><div class="ttname"><a href="classorglab__cpp_1_1application.html#a09a82eb53fa8c9307319180069aa085c">orglab_cpp::application::get_graphs</a></div><div class="ttdeci">long get_graphs() const</div><div class="ttdef"><b>Definition:</b> orglab_cpp_application.hpp:403</div></div>
+<div class="ttc" id="aclassorglab__cpp_1_1application_html_a9728c4428afaa86cad2f7c8907ad7bdd"><div class="ttname"><a href="classorglab__cpp_1_1application.html#a9728c4428afaa86cad2f7c8907ad7bdd">orglab_cpp::application::get_exe_folder</a></div><div class="ttdeci">std::wstring get_exe_folder() const</div><div class="ttdef"><b>Definition:</b> orglab_cpp_application.hpp:720</div></div>
 <div class="ttc" id="anamespaceorglab__cpp_html_a7b041c516bad6e1142d85a8d18d6d9f3a7a453faf4c20bab3fbb115fe0e3cb706"><div class="ttname"><a href="namespaceorglab__cpp.html#a7b041c516bad6e1142d85a8d18d6d9f3a7a453faf4c20bab3fbb115fe0e3cb706">orglab_cpp::return_values::open_fail</a></div><div class="ttdoc">Open project fail.</div></div>
 <div class="ttc" id="aclassorglab__cpp_1_1note_html"><div class="ttname"><a href="classorglab__cpp_1_1note.html">orglab_cpp::note</a></div><div class="ttdef"><b>Definition:</b> orglab_cpp_note.hpp:10</div></div>
 <div class="ttc" id="aclassorglab__cpp_1_1application_html_a30a1891c821fdc9b7a5324f10f53c564"><div class="ttname"><a href="classorglab__cpp_1_1application.html#a30a1891c821fdc9b7a5324f10f53c564">orglab_cpp::application::create_graph</a></div><div class="ttdeci">graph create_graph(const std::wstring &amp;user_template)</div><div class="ttdef"><b>Definition:</b> orglab_cpp_application.hpp:366</div></div>
@@ -982,6 +993,7 @@ $(document).ready(function(){initNavTree('orglab__cpp__application_8hpp_source.h
 <div class="ttc" id="aclassorglab__cpp_1_1folder_html"><div class="ttname"><a href="classorglab__cpp_1_1folder.html">orglab_cpp::folder</a></div><div class="ttdef"><b>Definition:</b> orglab_cpp_folder.hpp:15</div></div>
 <div class="ttc" id="aclassorglab__cpp_1_1application_html_aa89b095033c2563c571c4dc0e1b56b5e"><div class="ttname"><a href="classorglab__cpp_1_1application.html#aa89b095033c2563c571c4dc0e1b56b5e">orglab_cpp::application::get_note</a></div><div class="ttdeci">note get_note(const std::wstring &amp;name)</div><div class="ttdef"><b>Definition:</b> orglab_cpp_application.hpp:418</div></div>
 <div class="ttc" id="anamespaceorglab__cpp_html_a1b3c73074851e094c10d7fb1caf65afd"><div class="ttname"><a href="namespaceorglab__cpp.html#a1b3c73074851e094c10d7fb1caf65afd">orglab_cpp::is_dir</a></div><div class="ttdeci">bool is_dir(const T &amp;path)</div><div class="ttdef"><b>Definition:</b> orglab_cpp_utils.hpp:118</div></div>
+<div class="ttc" id="aclassorglab__cpp_1_1application_html_ae722e812cbfbcbbfacbb4a26667c8a58"><div class="ttname"><a href="classorglab__cpp_1_1application.html#ae722e812cbfbcbbfacbb4a26667c8a58">orglab_cpp::application::get_exe_folder</a></div><div class="ttdeci">std::string get_exe_folder() const</div><div class="ttdef"><b>Definition:</b> orglab_cpp_application.hpp:727</div></div>
 <div class="ttc" id="aclassorglab__cpp_1_1application_html_a9d553e5723dcd6377dc82f2ded2de831"><div class="ttname"><a href="classorglab__cpp_1_1application.html#a9d553e5723dcd6377dc82f2ded2de831">orglab_cpp::application::open_project</a></div><div class="ttdeci">return_values open_project(const std::wstring &amp;file, bool read_only=false)</div><div class="ttdef"><b>Definition:</b> orglab_cpp_application.hpp:170</div></div>
 <div class="ttc" id="aclassorglab__cpp_1_1workbook_html"><div class="ttname"><a href="classorglab__cpp_1_1workbook.html">orglab_cpp::workbook</a></div><div class="ttdef"><b>Definition:</b> orglab_cpp_workbook.hpp:10</div></div>
 <div class="ttc" id="anamespaceorglab__cpp_html_a302d0c11428c4ff80af2bb0faad20a86"><div class="ttname"><a href="namespaceorglab__cpp.html#a302d0c11428c4ff80af2bb0faad20a86">orglab_cpp::is_origin_file</a></div><div class="ttdeci">bool is_origin_file(const std::wstring &amp;file)</div><div class="ttdef"><b>Definition:</b> orglab_cpp_utils.hpp:141</div></div>

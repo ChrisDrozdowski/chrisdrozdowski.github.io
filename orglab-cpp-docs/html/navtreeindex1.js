@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"classorglab__cpp_1_1matrix__adapter.html":[2,0,0,7],
+"classorglab__cpp_1_1matrix__adapter.html#a1219485a43f3e665205888c0fe765bea":[2,0,0,7,7],
 "classorglab__cpp_1_1matrix__adapter.html#a1ad28e1034dbdc2ad1fd5f15d9a9dedd":[2,0,0,7,19],
 "classorglab__cpp_1_1matrix__adapter.html#a1efd70828f45d8523a869ae27fb10a95":[2,0,0,7,11],
 "classorglab__cpp_1_1matrix__adapter.html#a574b28507a2f479099860385fa56a8c7":[2,0,0,7,13],
@@ -225,8 +227,8 @@ var NAVTREEINDEX1 =
 "functions_d.html":[2,2,0,3],
 "functions_e.html":[2,2,0,4],
 "functions_f.html":[2,2,0,5],
-"functions_func.html":[2,2,1,0],
 "functions_func.html":[2,2,1],
+"functions_func.html":[2,2,1,0],
 "functions_func_b.html":[2,2,1,1],
 "functions_func_c.html":[2,2,1,2],
 "functions_func_d.html":[2,2,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "functions_g.html":[2,2,0,6],
 "functions_h.html":[2,2,0,7],
 "functions_i.html":[2,2,0,8],
-"functions_l.html":[2,2,0,9],
-"functions_m.html":[2,2,0,10],
-"functions_n.html":[2,2,0,11]
+"functions_l.html":[2,2,0,9]
 };

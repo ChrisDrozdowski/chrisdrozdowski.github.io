@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data_5ftype_461',['data_type',['../namespaceorglab__cpp.html#affb22b62ea88d79ea21fe04ac67eb0fa',1,'orglab_cpp']]]
+  ['data_5ftype_463',['data_type',['../namespaceorglab__cpp.html#affb22b62ea88d79ea21fe04ac67eb0fa',1,'orglab_cpp']]]
 ];
