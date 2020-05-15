@@ -23,6 +23,12 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "orglab-cpp", "index.html", [
+    [ "README", "index.html#autotoc_md1", [
+      [ "Learning About orglab_cpp", "index.html#autotoc_md2", null ],
+      [ "orglab-cpp Installation", "index.html#autotoc_md3", null ],
+      [ "Known Limitations", "index.html#autotoc_md4", null ],
+      [ "Important Information about OrgLab and Automation Server", "index.html#autotoc_md5", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
